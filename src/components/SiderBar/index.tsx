@@ -1,12 +1,12 @@
 import React from 'react'
 import Image from 'next/image'
-import { SiderBarContainer } from './styled'
+import { SideBarContainer } from './styled'
 
 const SideBar = () => {
     return (
-        <SiderBarContainer>
+        <SideBarContainer>
             <Image src="/images/mentorink-logo.png" alt="mentorink logo" width="162" height="30" />
-        </SiderBarContainer>
+        </SideBarContainer>
     )
 }
 

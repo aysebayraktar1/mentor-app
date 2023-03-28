@@ -7,9 +7,11 @@ export const CustomButton: FC<IButtonProps> = ({
     iconsize = 'small',
     children,
     variant = 'default',
+    bg,
+    onClick,
 }) => {
     return (
-        <Button variant={variant}>
+        <Button variant={variant} bg={bg} onClick={onClick}>
             {icon && iconPosition === 'left' && (
                 <IconStyled iconsize={iconsize} src={`/icons/${icon}.svg`} alt={icon} width={20} height={20} />
             )}

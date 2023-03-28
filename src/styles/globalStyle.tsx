@@ -4,9 +4,10 @@ const GlobalStyle = createGlobalStyle`
    body {
     margin: 0;
     padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-}
+    background-color: #F7F8FA;
+    font-family: 'SF Compact Display', sans-serif;
   }
+  
    html,
    body,
    body > div:first-child,

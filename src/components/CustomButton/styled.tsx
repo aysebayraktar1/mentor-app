@@ -1,15 +1,7 @@
 import Image from 'next/image'
 import styled, { css } from 'styled-components'
 
-interface ButtonStyledProps {
-    variant?: 'default' | 'outline' | 'text'
-}
-
-interface IconStyledProps {
-    iconsize?: 'small' | 'medium'
-}
-
-export const Button = styled.button<ButtonStyledProps>`
+export const Button = styled.button<CustomButtonStyledProps>`
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -20,11 +12,12 @@ export const Button = styled.button<ButtonStyledProps>`
     border: none;
     border-radius: 8px;
     margin-right: 15px;
+    cursor: pointer;
 
-    ${({ variant }) => {
+    ${({ variant, bg }) => {
         if (variant === 'outline') {
             return css`
-                color: #f48220;
+                color: ${(props) => props.theme.colors.primary};
                 background-color: transparent;
                 border: 1.3px solid rgba(244, 130, 32, 0.3);
             `
@@ -33,12 +26,18 @@ export const Button = styled.button<ButtonStyledProps>`
                 background-color: transparent;
                 padding: 0;
                 height: auto;
-                color: #f48220;
+                color: ${(props) => props.theme.colors.error};
+            `
+        } else if (bg === 'white') {
+            return css`
+                color: #132131;
+                background: #ffffff;
+                box-shadow: 0px 5px 5px -5px rgba(19, 33, 49, 0.2);
             `
         } else {
             return css`
                 color: #fff;
-                background: #f48220;
+                background: ${(props) => props.theme.colors.primary};
             `
         }
     }}

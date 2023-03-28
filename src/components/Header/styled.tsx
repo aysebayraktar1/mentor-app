@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const HeaderStyled = styled.div`
-    background-color: #f48220;
+    background-color: ${(props) => props.theme.colors.primary};
     width: 100%;
     color: white;
     display: flex;
@@ -20,13 +20,32 @@ export const HeaderRightSide = styled.div`
     display: flex;
 `
 
-export const HeaderRightItemRound = styled.div`
+export const HeaderRightItemRound = styled.button`
     width: 40px;
     height: 40px;
     background: #e2771a;
-    border-radius: 70px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-right: 12px;
+    position: relative;
+    cursor: pointer;
+    border: none;
+`
+
+export const BadgeStyled = styled.div`
+    position: absolute;
+    width: 20px;
+    height: 15px;
+    right: 117px;
+    top: 5px;
+    background: #ffffff;
+    border-radius: 26px;
+    font-weight: 700;
+    color: ${(props) => props.theme.colors.primary};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
 `

@@ -1,21 +1,22 @@
 import React, { FC } from 'react'
-import { MenuLeftSide, MenuRightSide, MenuContainer, ButtonStyled } from './styled'
+import CustomButton from '../CustomButton'
+import { MenuLeftSide, MenuRightSide, MenuContainer } from './styled'
 
 const Menu: FC = () => {
     return (
         <MenuContainer>
             <MenuRightSide>
-                <ButtonStyled icon="matching-icon" iconPosition="left" iconsize="medium">
+                <CustomButton icon="matching-icon" iconPosition="left" iconsize="medium">
                     Run Matching Engine
-                </ButtonStyled>
-                <ButtonStyled icon="list-icon" iconPosition="left" variant="outline" iconsize="small">
+                </CustomButton>
+                <CustomButton icon="list-icon" iconPosition="left" variant="outline" iconsize="small">
                     List View
-                </ButtonStyled>
+                </CustomButton>
             </MenuRightSide>
             <MenuLeftSide>
-                <ButtonStyled variant="text">Ignore</ButtonStyled>
-                <ButtonStyled variant="outline">Add to Queue</ButtonStyled>
-                <ButtonStyled>Match Up</ButtonStyled>
+                <CustomButton variant="text">Ignore</CustomButton>
+                <CustomButton variant="outline">Add to Queue</CustomButton>
+                <CustomButton>Match Up</CustomButton>
             </MenuLeftSide>
         </MenuContainer>
     )
