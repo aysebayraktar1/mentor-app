@@ -22,8 +22,7 @@ interface IData {
 }
 
 interface IResponse {
-    slice(arg0: number, PAGE_SIZE: number): React.SetStateAction<IData[]>
-    movies: IData[]
+    movies: any
     status: string
 }
 

@@ -20,11 +20,11 @@ import {
     MenuActionButtons,
 } from './styled'
 import Actions from '../Actions'
+import { useGlobalContext } from '@/store/'
 
 export const Card: FC<{
     match: IData
 }> = ({ match }) => {
-    const [selected, setSelected] = useState(false)
     const {
         mentorFullName,
         mentorAvatarUrl,
@@ -35,16 +35,19 @@ export const Card: FC<{
         programName,
         menteeApplicationDate,
         score,
+        id,
     } = match
+    const { setSelectedMatches, selectedMatches } = useGlobalContext()
 
     const handleSelect = () => {
-        setSelected(!selected)
+        setSelectedMatches([match, ...selectedMatches])
     }
 
-    const buttonText = selected ? 'Selected' : 'Select'
+    const selectedItem = selectedMatches?.some((match: IData) => match.id === id)
+    const buttonText = selectedItem ? 'Selected' : 'Select'
 
     return (
-        <CardWrapper selected={selected}>
+        <CardWrapper selected={selectedItem}>
             <MentorInfo>
                 <AvatarStyled loading="lazy" src={mentorAvatarUrl} alt="mentor avatar" width={60} height={60} />
                 <NameStyled>{mentorFullName}</NameStyled>
@@ -56,8 +59,8 @@ export const Card: FC<{
             <MenuActions>
                 <CircularProgressBar progress={score} />
                 <MenuActionButtons>
-                    <ButtonStyled selected={selected} onClick={handleSelect}>
-                        {selected && <Image src="/icons/check-icon.svg" alt="check icon" width={12} height={9} />}
+                    <ButtonStyled selected={selectedItem} onClick={handleSelect}>
+                        {selectedItem && <Image src="/icons/check-icon.svg" alt="check icon" width={12} height={9} />}
                         {buttonText}
                     </ButtonStyled>
                     <Actions />

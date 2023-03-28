@@ -3,6 +3,7 @@ import CustomButton from '@/components/CustomButton'
 import Header from '@/components/Header'
 import Menu from '@/components/Menu'
 import SideBar from '@/components/SiderBar'
+import { useGlobalContext } from '@/store'
 import {
     Container,
     PageContainer,
@@ -14,19 +15,20 @@ import {
 } from '@/styles/home'
 import { useEffect, useState } from 'react'
 import { fetchMatches } from '../service/index'
-
 const PAGE_SIZE = 6
 
 export default function Home() {
     const [matches, setMatches] = useState<IData[]>([])
-    const [allMatches, setAllMatches] = useState<IData[] | Record<string, any>>([])
+    const [allMatches, setAllMatches] = useState<IData[]>([])
     const [isLoading, setIsLoading] = useState(false)
     const [hasMoreData, setHasMoreData] = useState(true)
+
+    const { setSelectedMatches, selectedMatches } = useGlobalContext()
 
     useEffect(() => {
         const getData = async () => {
             const data = await fetchMatches()
-            setAllMatches(data)
+            setAllMatches(data || [])
             setMatches(data?.slice(0, PAGE_SIZE))
         }
 
@@ -34,7 +36,9 @@ export default function Home() {
     }, [])
 
     const handleSelectAll = () => {
-        console.log('-----> selected all')
+        if (allMatches.length > 0) {
+            setSelectedMatches(allMatches)
+        }
     }
 
     const loadMoreData = () => {
@@ -56,7 +60,7 @@ export default function Home() {
                 <PageHeader>
                     <PageTitle>Best Results of the Auto-Matching engine</PageTitle>
                     <SelectMenu>
-                        <CountSelectedText>17 User Selected</CountSelectedText>
+                        <CountSelectedText>{selectedMatches?.length} User Selected</CountSelectedText>
                         <CustomButton icon="select-icon" iconPosition="left" bg="white" onClick={handleSelectAll}>
                             Select All
                         </CustomButton>

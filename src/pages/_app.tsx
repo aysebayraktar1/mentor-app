@@ -3,6 +3,7 @@ import { ThemeProvider } from 'styled-components'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import theme from '@/styles/theme'
+import { GlobalContextProvider } from '@/store/globalContext'
 
 export default function App({ Component, pageProps }: AppProps) {
     return (
@@ -13,7 +14,9 @@ export default function App({ Component, pageProps }: AppProps) {
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                 </Head>
                 <GlobalStyle />
-                <Component {...pageProps} />
+                <GlobalContextProvider>
+                    <Component {...pageProps} />
+                </GlobalContextProvider>
             </ThemeProvider>
         </>
     )
