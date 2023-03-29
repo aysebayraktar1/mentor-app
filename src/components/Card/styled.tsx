@@ -2,7 +2,7 @@ import { size } from '@/utils/const'
 import styled, { css } from 'styled-components'
 
 export const CardWrapper = styled.div<ButtonStyledProps>`
-    width: 460px;
+    width: 448px;
     height: 260px;
     background: #ffffff;
     box-shadow: 0px 2px 4px -2px rgba(0, 0, 0, 0.1);

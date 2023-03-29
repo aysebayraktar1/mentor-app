@@ -3,8 +3,8 @@ import { FilledCircle, Container, Text, Circle, PercentageStyled } from './style
 
 export function CircularProgressBar({ progress, label = 'Progress Bar' }: CircularProgressBarProps): ReactElement {
     const strokeWidth = 9
-    const radius = 100 / 2 - (strokeWidth - 2) * 2
-    const circumference = radius * 2 * Math.PI
+    const radius = (100 - strokeWidth * 2) / 2
+    const circumference = 2 * Math.PI * radius
     const offset = circumference - (progress / 100) * circumference
 
     return (

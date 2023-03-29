@@ -13,7 +13,7 @@ export const Circle = styled.circle`
 `
 
 export const FilledCircle = styled(Circle)`
-    stroke: ${(props) => props.theme.colors.primary};
+    stroke: #f48220;
     transform: rotate(-90deg);
     transform-origin: 50% 50%;
     transition: stroke-dashoffset 0.5s ease-out;
