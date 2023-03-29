@@ -2,7 +2,6 @@ import { formatDate } from '@/utils/formatDate'
 import React, { FC } from 'react'
 import { CircularProgressBar } from '../CircularProgressBar'
 import Image from 'next/image'
-import { useState } from 'react'
 import {
     CardWrapper,
     MenteeInfo,
@@ -20,11 +19,12 @@ import {
     MenuActionButtons,
 } from './styled'
 import Actions from '../Actions'
-import { useGlobalContext } from '@/store/'
 
 export const Card: FC<{
     match: IData
-}> = ({ match }) => {
+    selected: boolean
+    onClick: (id: string) => void
+}> = ({ match, selected, onClick }) => {
     const {
         mentorFullName,
         mentorAvatarUrl,
@@ -37,17 +37,9 @@ export const Card: FC<{
         score,
         id,
     } = match
-    const { setSelectedMatches, selectedMatches } = useGlobalContext()
-
-    const handleSelect = () => {
-        setSelectedMatches([match, ...selectedMatches])
-    }
-
-    const selectedItem = selectedMatches?.some((match: IData) => match.id === id)
-    const buttonText = selectedItem ? 'Selected' : 'Select'
 
     return (
-        <CardWrapper selected={selectedItem}>
+        <CardWrapper selected={selected}>
             <MentorInfo>
                 <AvatarStyled loading="lazy" src={mentorAvatarUrl} alt="mentor avatar" width={60} height={60} />
                 <NameStyled>{mentorFullName}</NameStyled>
@@ -59,9 +51,9 @@ export const Card: FC<{
             <MenuActions>
                 <CircularProgressBar progress={score} />
                 <MenuActionButtons>
-                    <ButtonStyled selected={selectedItem} onClick={handleSelect}>
-                        {selectedItem && <Image src="/icons/check-icon.svg" alt="check icon" width={12} height={9} />}
-                        {buttonText}
+                    <ButtonStyled selected={selected} onClick={() => onClick(id)}>
+                        {selected && <Image src="/icons/check-icon.svg" alt="check icon" width={12} height={9} />}
+                        {selected ? 'Selected' : 'Select'}
                     </ButtonStyled>
                     <Actions />
                 </MenuActionButtons>

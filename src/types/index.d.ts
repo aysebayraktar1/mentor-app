@@ -50,22 +50,3 @@ interface ActionButtonProps {
     border?: string
     hover?: boolean
 }
-
-interface ITheme {
-    colors: {
-        primary: string
-        secondary: string
-        grey: string
-        darkGray: string
-        error: string
-        region: string
-    }
-}
-interface ISize {
-    mobileS: string
-    mobileM: string
-    mobileL: string
-    tablet: string
-    large: string
-    extraLarge: string
-}

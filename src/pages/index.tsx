@@ -36,8 +36,11 @@ export default function Home() {
     }, [])
 
     const handleSelectAll = () => {
-        if (allMatches.length > 0) {
-            setSelectedMatches(allMatches)
+        const length = allMatches.length
+        if (allMatches.length === selectedMatches.length) {
+            setSelectedMatches([])
+        } else if (allMatches.length > 0) {
+            setSelectedMatches(Array.from({ length }, (_, index) => String(index + 1)))
         }
     }
 

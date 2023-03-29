@@ -1,3 +1,14 @@
+interface ITheme {
+    colors: {
+        primary: string
+        secondary: string
+        grey: string
+        darkGray: string
+        error: string
+        region: string
+    }
+}
+
 const theme: ITheme = {
     colors: {
         primary: '#F48220',

@@ -2,8 +2,8 @@ import React, { ReactNode, useState } from 'react'
 import { useEffect } from 'react'
 
 interface IGlobalContextProps {
-    selectedMatches: IData[] | []
-    setSelectedMatches: (matches: IData[]) => void
+    selectedMatches: string[]
+    setSelectedMatches: (matches: string[]) => void
 }
 
 export const GlobalContext = React.createContext<IGlobalContextProps>({
@@ -16,7 +16,7 @@ type Props = {
 }
 
 export const GlobalContextProvider = ({ children }: Props) => {
-    const [selectedMatches, setSelectedMatches] = useState<IData[]>([])
+    const [selectedMatches, setSelectedMatches] = useState<string[]>([])
 
     useEffect(() => {
         const item = window.localStorage.getItem('selectedMatches')
