@@ -15,6 +15,9 @@ export const CardWrapper = styled.div<ButtonStyledProps>`
     @media (max-width: ${size.extraLarge}) {
         width: 355px;
     }
+    @media (max-width: ${size.tablet}) {
+        width: 365px;
+    }
 
     :hover {
         border: 2px solid rgba(244, 130, 32, 0.3);

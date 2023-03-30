@@ -2,6 +2,10 @@
 
 According to the design given in [figma](https://www.figma.com/file/pZwpdKmAAfYvdqI4RIFf2L/Use-Case?node-id=0-1&t=rb7ADY3V1GHCwFdB-0), a responsive design was created. Request to mock api is thrown with fetch in src/service folder. The icons and images used (in the public folder) were optimized for performance and used with next/image. The load more button was used while listing the cards for performance. The cards selected to show the global store usage are kept in the store with the contextApi. Since Nextjs rendered ssr, it was saved to local storage and used from there.
 
+### Online Demo
+
+https://mentor-app-nine.vercel.app/
+
 ## Technologies and Systems Used In This Project
 
 -   [Next.js 13](https://github.com/vercel/next.js/)
